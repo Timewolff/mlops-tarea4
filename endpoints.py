@@ -82,10 +82,16 @@ async def predict(
 
     try:
         df = pd.DataFrame(dictionary, index=[0])
-        prediction = model.predict(df)
+        prediction = model.predict(df)[0]
+
+        if prediction == 1:
+            prediction = "Malignant"
+        else:   
+            prediction = "Benign"
+
         return JSONResponse(
             status_code=status.HTTP_200_OK,
-            content=prediction
+            content=str(prediction)
         )
     except Exception as e:
         raise HTTPException(
