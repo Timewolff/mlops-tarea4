@@ -53,7 +53,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build docker image
-        run: docker build -t esteb25/mlops_course/deploy-breast-cancer:v1 .
+        run: docker build -t esteb25/mlops_course:breast-cancer-v1 .
 
       - name: Docker push to Dockerhub
-        run: docker push esteb25/mlops_course:deploy-breast-cancer:v1
+        run: docker push esteb25/mlops_course:breast-cancer-v1
